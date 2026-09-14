@@ -18,7 +18,10 @@
     <header class="w-full px-6 py-7 sm:px-10 lg:px-16">
       <nav class="mx-auto flex max-w-7xl items-center justify-between">
         <!-- โลโก้ -->
-        <a href="#home" class="text-2xl font-bold tracking-tight sm:text-3xl">
+        <a
+          href="#home"
+          class="text-2xl font-bold tracking-tight transition hover:text-emerald-400 sm:text-3xl"
+        >
           <span class="text-emerald-400">&gt;_</span>Misster Double T
         </a>
 
@@ -58,15 +61,12 @@
 
             แก้ไข: เพิ่ม aria-expanded เพื่อให้เทคโนโลยีช่วยเหลือทราบสถานะ
             ของปุ่มเมื่อเชื่อมการทำงานแล้ว ขณะนี้ยังไม่มีสคริปต์สำหรับแผงเมนู
-            หรือการสลับเมนู เช่นเดียวกับจุดยึด #portfolio และ #contact ที่ว่างอยู่
-            ซึ่งจะพัฒนาในขั้นตอนถัดไป เมื่อเพิ่มแผงเมนูแล้ว ให้สลับค่านี้
-            รวมถึงไอคอนในตัวจัดการคลิก
-          -->
+        -->
         <button
           type="button"
           aria-label="Open menu"
           aria-expanded="false"
-          class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/30 text-white md:hidden"
+          class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/30 text-white transition hover:border-yellow-400 hover:text-yellow-400 md:hidden"
         >
           <svg
             class="h-5 w-5"
@@ -95,8 +95,8 @@
         class="mx-auto grid min-h-[calc(100vh-100px)] max-w-7xl items-center gap-12 px-6 pb-12 pt-8 sm:px-10 lg:grid-cols-2 lg:gap-16 lg:px-16 lg:pb-20"
       >
         <!-- =================================================
-                 เนื้อหาด้านซ้าย
-                 ================================================= -->
+             เนื้อหาด้านซ้าย
+             ================================================= -->
 
         <div
           class="order-2 flex flex-col items-center text-center lg:order-1 lg:items-start lg:text-left"
@@ -112,8 +112,8 @@
 
           <!-- คำอธิบาย -->
           <p class="mt-4 max-w-md text-sm leading-5 text-white sm:text-base">
-            Hi, I’m 6619410001 Thatchai Khunsricharoen Call me Misster Double T.
-            A passionate Full Stack
+            Hi, I’m 6619410001 Thatchai Khunsricharoen. Call me Misster Double
+            T. A passionate Full Stack
             <br class="hidden sm:block" />
             Web Developer based in Thailand.
           </p>
@@ -124,10 +124,10 @@
             <a
               href="#"
               aria-label="LinkedIn"
-              class="flex h-8 w-8 items-center justify-center rounded-full bg-white text-black transition hover:scale-110 hover:bg-yellow-400"
+              class="flex h-10 w-10 items-center justify-center rounded-full bg-white text-black shadow-[0_4px_12px_rgba(255,255,255,0.15)] transition duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-400 hover:shadow-[0_8px_20px_rgba(250,204,21,0.35)]"
             >
               <svg
-                class="h-5 w-5"
+                class="h-5 w-5 drop-shadow-md"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -142,10 +142,10 @@
             <a
               href="#"
               aria-label="GitHub"
-              class="flex h-8 w-8 items-center justify-center rounded-full bg-white text-black transition hover:scale-110 hover:bg-yellow-400"
+              class="flex h-10 w-10 items-center justify-center rounded-full bg-white text-black shadow-[0_4px_12px_rgba(255,255,255,0.15)] transition duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-yellow-400 hover:shadow-[0_8px_20px_rgba(250,204,21,0.35)]"
             >
               <svg
-                class="h-5 w-5"
+                class="h-5 w-5 drop-shadow-md"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -161,21 +161,25 @@
         </div>
 
         <!-- =================================================
-                 รูปโปรไฟล์
-                 ================================================= -->
+             รูปโปรไฟล์
+             ================================================= -->
 
         <div class="order-1 flex justify-center lg:order-2 lg:justify-end">
           <div
-            class="relative h-64 w-64 overflow-hidden rounded-full sm:h-72 sm:w-72 md:h-80 md:w-80 lg:h-[310px] lg:w-[310px] xl:h-[330px] xl:w-[330px]"
+            class="relative h-64 w-64 overflow-hidden rounded-full border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.08)] sm:h-72 sm:w-72 md:h-80 md:w-80 lg:h-[310px] lg:w-[310px] xl:h-[330px] xl:w-[330px]"
           >
             <img
               src="./images/myprofile.png"
               alt="My profile picture"
-              class="h-full w-full object-cover"
+              class="h-full w-full object-cover transition duration-500 hover:scale-105"
             />
           </div>
         </div>
       </section>
+
+      <!-- =====================================================
+           Tech Stacks
+           ===================================================== -->
 
       <section
         id="about"
@@ -190,12 +194,11 @@
         >
           <!-- เทคโนโลยี HTML -->
           <div
-            class="flex h-10 w-10 items-center justify-center text-orange-500 transition hover:scale-110"
+            class="group flex h-12 w-12 items-center justify-center rounded-xl border border-orange-500/20 bg-orange-500/5 text-orange-500 shadow-[0_4px_12px_rgba(249,115,22,0.12)] transition duration-300 hover:-translate-y-1 hover:scale-110 hover:border-orange-500/40 hover:bg-orange-500/10 hover:shadow-[0_10px_25px_rgba(249,115,22,0.3)]"
             title="HTML5"
           >
-            <!-- แก้ไข: เพิ่ม role="img" เพื่อให้ประกาศ aria-label ของ SVG แบบอินไลน์ได้อย่างถูกต้อง (แท็ก <svg> ไม่มีบทบาท "image" โดยปริยาย) -->
             <svg
-              class="h-9 w-9"
+              class="h-9 w-9 drop-shadow-[0_3px_4px_rgba(249,115,22,0.35)]"
               viewBox="0 0 24 24"
               fill="currentColor"
               role="img"
@@ -209,11 +212,11 @@
 
           <!-- เทคโนโลยี CSS -->
           <div
-            class="flex h-10 w-10 items-center justify-center text-blue-500 transition hover:scale-110"
+            class="group flex h-12 w-12 items-center justify-center rounded-xl border border-blue-500/20 bg-blue-500/5 text-blue-500 shadow-[0_4px_12px_rgba(59,130,246,0.12)] transition duration-300 hover:-translate-y-1 hover:scale-110 hover:border-blue-500/40 hover:bg-blue-500/10 hover:shadow-[0_10px_25px_rgba(59,130,246,0.3)]"
             title="CSS3"
           >
             <svg
-              class="h-9 w-9"
+              class="h-9 w-9 drop-shadow-[0_3px_4px_rgba(59,130,246,0.35)]"
               viewBox="0 0 24 24"
               fill="currentColor"
               role="img"
@@ -227,19 +230,23 @@
 
           <!-- เทคโนโลยี JavaScript -->
           <div
-            class="flex h-10 w-10 items-center justify-center text-yellow-400 transition hover:scale-110"
+            class="group flex h-12 w-12 items-center justify-center rounded-xl border border-yellow-400/20 bg-yellow-400/5 text-yellow-400 shadow-[0_4px_12px_rgba(250,204,21,0.12)] transition duration-300 hover:-translate-y-1 hover:scale-110 hover:border-yellow-400/40 hover:bg-yellow-400/10 hover:shadow-[0_10px_25px_rgba(250,204,21,0.3)]"
             title="JavaScript"
           >
-            <span class="text-3xl font-black">JS</span>
+            <span
+              class="text-2xl font-black drop-shadow-[0_3px_4px_rgba(250,204,21,0.4)]"
+            >
+              JS
+            </span>
           </div>
 
           <!-- เทคโนโลยี Node.js -->
           <div
-            class="flex h-10 w-10 items-center justify-center text-green-500 transition hover:scale-110"
+            class="group flex h-12 w-12 items-center justify-center rounded-xl border border-green-500/20 bg-green-500/5 text-green-500 shadow-[0_4px_12px_rgba(34,197,94,0.12)] transition duration-300 hover:-translate-y-1 hover:scale-110 hover:border-green-500/40 hover:bg-green-500/10 hover:shadow-[0_10px_25px_rgba(34,197,94,0.3)]"
             title="Node.js"
           >
             <svg
-              class="h-9 w-9"
+              class="h-9 w-9 drop-shadow-[0_3px_4px_rgba(34,197,94,0.35)]"
               viewBox="0 0 24 24"
               fill="currentColor"
               role="img"
@@ -253,11 +260,11 @@
 
           <!-- เทคโนโลยี React -->
           <div
-            class="flex h-10 w-10 items-center justify-center text-cyan-400 transition hover:scale-110"
+            class="group flex h-12 w-12 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/5 text-cyan-400 shadow-[0_4px_12px_rgba(34,211,238,0.12)] transition duration-300 hover:-translate-y-1 hover:scale-110 hover:border-cyan-400/40 hover:bg-cyan-400/10 hover:shadow-[0_10px_25px_rgba(34,211,238,0.3)]"
             title="React"
           >
             <svg
-              class="h-10 w-10"
+              class="h-10 w-10 drop-shadow-[0_3px_4px_rgba(34,211,238,0.4)]"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -286,11 +293,11 @@
 
           <!-- เทคโนโลยี Spring -->
           <div
-            class="flex h-10 w-10 items-center justify-center text-green-500 transition hover:scale-110"
+            class="group flex h-12 w-12 items-center justify-center rounded-xl border border-green-500/20 bg-green-500/5 text-green-500 shadow-[0_4px_12px_rgba(34,197,94,0.12)] transition duration-300 hover:-translate-y-1 hover:scale-110 hover:border-green-500/40 hover:bg-green-500/10 hover:shadow-[0_10px_25px_rgba(34,197,94,0.3)]"
             title="Spring"
           >
             <svg
-              class="h-10 w-10"
+              class="h-10 w-10 drop-shadow-[0_3px_4px_rgba(34,197,94,0.4)]"
               viewBox="0 0 24 24"
               fill="currentColor"
               role="img"
@@ -304,11 +311,11 @@
 
           <!-- เทคโนโลยี Java -->
           <div
-            class="flex h-10 w-10 items-center justify-center text-orange-400 transition hover:scale-110"
+            class="group flex h-12 w-12 items-center justify-center rounded-xl border border-orange-400/20 bg-orange-400/5 text-orange-400 shadow-[0_4px_12px_rgba(251,146,60,0.12)] transition duration-300 hover:-translate-y-1 hover:scale-110 hover:border-orange-400/40 hover:bg-orange-400/10 hover:shadow-[0_10px_25px_rgba(251,146,60,0.3)]"
             title="Java"
           >
             <svg
-              class="h-10 w-10"
+              class="h-10 w-10 drop-shadow-[0_3px_4px_rgba(251,146,60,0.4)]"
               viewBox="0 0 24 24"
               fill="currentColor"
               role="img"
@@ -322,11 +329,11 @@
 
           <!-- เทคโนโลยี Figma -->
           <div
-            class="flex h-10 w-10 items-center justify-center text-pink-500 transition hover:scale-110"
+            class="group flex h-12 w-12 items-center justify-center rounded-xl border border-pink-500/20 bg-white/5 shadow-[0_4px_12px_rgba(255,255,255,0.1)] transition duration-300 hover:-translate-y-1 hover:scale-110 hover:border-pink-500/40 hover:bg-white/10 hover:shadow-[0_10px_25px_rgba(236,72,153,0.3)]"
             title="Figma"
           >
             <svg
-              class="h-9 w-9"
+              class="h-9 w-9 drop-shadow-[0_3px_4px_rgba(236,72,153,0.3)]"
               viewBox="0 0 24 24"
               role="img"
               aria-label="Figma"
@@ -341,11 +348,11 @@
 
           <!-- เทคโนโลยี Firebase -->
           <div
-            class="flex h-10 w-10 items-center justify-center text-yellow-400 transition hover:scale-110"
+            class="group flex h-12 w-12 items-center justify-center rounded-xl border border-yellow-400/20 bg-yellow-400/5 text-yellow-400 shadow-[0_4px_12px_rgba(250,204,21,0.12)] transition duration-300 hover:-translate-y-1 hover:scale-110 hover:border-yellow-400/40 hover:bg-yellow-400/10 hover:shadow-[0_10px_25px_rgba(250,204,21,0.3)]"
             title="Firebase"
           >
             <svg
-              class="h-10 w-10"
+              class="h-10 w-10 drop-shadow-[0_3px_4px_rgba(250,204,21,0.4)]"
               viewBox="0 0 24 24"
               fill="currentColor"
               role="img"
@@ -359,9 +366,12 @@
         </div>
       </section>
 
+      <!-- จุดยึดสำหรับ Portfolio -->
       <section id="portfolio" class="h-0"></section>
 
+      <!-- จุดยึดสำหรับ Contact -->
       <section id="contact" class="h-0"></section>
     </main>
   </body>
 </html>
+```
