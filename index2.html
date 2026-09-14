@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Misster Double T - Full Stack Developer</title>
+
+    <!-- ใช้ Tailwind CSS เท่านั้น -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+
+  <body class="min-h-screen overflow-x-hidden bg-black text-white">
+    <!-- =====================================================
+         แถบนำทาง
+         ===================================================== -->
+
+    <header class="w-full px-6 py-7 sm:px-10 lg:px-16">
+      <nav class="mx-auto flex max-w-7xl items-center justify-between">
+        <!-- โลโก้ -->
+        <a href="#home" class="text-2xl font-bold tracking-tight sm:text-3xl">
+          <span class="text-emerald-400">&gt;_</span>Misster Double T
+        </a>
+
+        <!-- ลิงก์แถบนำทาง -->
+        <div class="hidden items-center gap-7 md:flex">
+          <a
+            href="#home"
+            class="text-sm font-semibold text-yellow-400 transition hover:text-yellow-300"
+          >
+            Home
+          </a>
+
+          <a
+            href="#about"
+            class="text-sm font-medium text-white transition hover:text-yellow-400"
+          >
+            About
+          </a>
+
+          <a
+            href="#portfolio"
+            class="text-sm font-medium text-white transition hover:text-yellow-400"
+          >
+            Portfolio
+          </a>
+
+          <a
+            href="#contact"
+            class="rounded-full border border-white px-5 py-2 text-sm font-medium transition hover:bg-white hover:text-black"
+          >
+            Let's talk
+          </a>
+        </div>
+
+        <!--
+            ปุ่มเมนูบนมือถือ
+
+            แก้ไข: เพิ่ม aria-expanded เพื่อให้เทคโนโลยีช่วยเหลือทราบสถานะ
+            ของปุ่มเมื่อเชื่อมการทำงานแล้ว ขณะนี้ยังไม่มีสคริปต์สำหรับแผงเมนู
+            หรือการสลับเมนู เช่นเดียวกับจุดยึด #portfolio และ #contact ที่ว่างอยู่
+            ซึ่งจะพัฒนาในขั้นตอนถัดไป เมื่อเพิ่มแผงเมนูแล้ว ให้สลับค่านี้
+            รวมถึงไอคอนในตัวจัดการคลิก
+          -->
+        <button
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          class="flex h-10 w-10 items-center justify-center rounded-lg border border-white/30 text-white md:hidden"
+        >
+          <svg
+            class="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </nav>
+    </header>
+
+    <!-- =====================================================
+         ส่วนหลักด้านบน
+         ===================================================== -->
+
+    <main id="home">
+      <section
+        class="mx-auto grid min-h-[calc(100vh-100px)] max-w-7xl items-center gap-12 px-6 pb-12 pt-8 sm:px-10 lg:grid-cols-2 lg:gap-16 lg:px-16 lg:pb-20"
+      >
+        <!-- =================================================
+                 เนื้อหาด้านซ้าย
+                 ================================================= -->
+
+        <div
+          class="order-2 flex flex-col items-center text-center lg:order-1 lg:items-start lg:text-left"
+        >
+          <!-- หัวข้อหลัก -->
+          <h1
+            class="max-w-xl font-serif text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl"
+          >
+            Full Stack Web
+            <br />
+            Developer !
+          </h1>
+
+          <!-- คำอธิบาย -->
+          <p class="mt-4 max-w-md text-sm leading-5 text-white sm:text-base">
+            Hi, I’m 6619410001 Thatchai Khunsricharoen Call me Misster Double T.
+            A passionate Full Stack
+            <br class="hidden sm:block" />
+            Web Developer based in Thailand.
+          </p>
+
+          <!-- ไอคอนโซเชียล -->
+          <div class="mt-5 flex items-center gap-4">
+            <!-- ไอคอน LinkedIn -->
+            <a
+              href="#"
+              aria-label="LinkedIn"
+              class="flex h-8 w-8 items-center justify-center rounded-full bg-white text-black transition hover:scale-110 hover:bg-yellow-400"
+            >
+              <svg
+                class="h-5 w-5"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A2 2 0 1 0 5.25 7a2 2 0 0 0 0-4ZM20.75 13.4c0-3.47-1.85-5.09-4.32-5.09-1.99 0-2.88 1.1-3.38 1.88V8.5H9.67V20h3.38v-6.04c0-1.59.3-3.13 2.27-3.13 1.94 0 1.96 1.82 1.96 3.23V20h3.38l.09-6.6Z"
+                />
+              </svg>
+            </a>
+
+            <!-- ไอคอน GitHub -->
+            <a
+              href="#"
+              aria-label="GitHub"
+              class="flex h-8 w-8 items-center justify-center rounded-full bg-white text-black transition hover:scale-110 hover:bg-yellow-400"
+            >
+              <svg
+                class="h-5 w-5"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.2-3.37-1.2-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.35 1.12 2.93.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.16 9.16 0 0 1 12 8.15c.85 0 1.71.12 2.51.36 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.35 4.8-4.58 5.05.36.32.68.94.68 1.9v2.81c0 .27.18.59.69.49A10.23 10.23 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- =================================================
+                 รูปโปรไฟล์
+                 ================================================= -->
+
+        <div class="order-1 flex justify-center lg:order-2 lg:justify-end">
+          <div
+            class="relative h-64 w-64 overflow-hidden rounded-full sm:h-72 sm:w-72 md:h-80 md:w-80 lg:h-[310px] lg:w-[310px] xl:h-[330px] xl:w-[330px]"
+          >
+            <img
+              src="./images/myprofile.png"
+              alt="My profile picture"
+              class="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="about"
+        class="mx-auto max-w-7xl px-6 pb-14 sm:px-10 lg:px-16"
+      >
+        <h2 class="text-center text-sm font-semibold text-white sm:text-base">
+          My Tech Stacks
+        </h2>
+
+        <div
+          class="mx-auto mt-5 flex max-w-2xl flex-wrap items-center justify-center gap-5 sm:gap-7"
+        >
+          <!-- เทคโนโลยี HTML -->
+          <div
+            class="flex h-10 w-10 items-center justify-center text-orange-500 transition hover:scale-110"
+            title="HTML5"
+          >
+            <!-- แก้ไข: เพิ่ม role="img" เพื่อให้ประกาศ aria-label ของ SVG แบบอินไลน์ได้อย่างถูกต้อง (แท็ก <svg> ไม่มีบทบาท "image" โดยปริยาย) -->
+            <svg
+              class="h-9 w-9"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              role="img"
+              aria-label="HTML5"
+            >
+              <path
+                d="M1.5 1.5h21l-1.91 21L12 24l-8.59-1.5L1.5 1.5Zm17.44 4.2H5.06l.23 2.53h13.42l-.23 2.54H5.52l.24 2.58h10.11l-.33 3.45-3.54.95-3.54-.95-.23-2.43H5.7l.4 4.54 5.9 1.64 5.9-1.64 1.04-11.21Z"
+              />
+            </svg>
+          </div>
+
+          <!-- เทคโนโลยี CSS -->
+          <div
+            class="flex h-10 w-10 items-center justify-center text-blue-500 transition hover:scale-110"
+            title="CSS3"
+          >
+            <svg
+              class="h-9 w-9"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              role="img"
+              aria-label="CSS3"
+            >
+              <path
+                d="M1.5 1.5h21l-1.91 21L12 24l-8.59-1.5L1.5 1.5Zm17.45 4.2H5.05l.23 2.53h13.43l-.23 2.54H5.52l.23 2.58h10.1l-.33 3.45-3.53.95-3.53-.95-.24-2.43H5.7l.41 4.54 5.89 1.64 5.9-1.64 1.05-11.21Z"
+              />
+            </svg>
+          </div>
+
+          <!-- เทคโนโลยี JavaScript -->
+          <div
+            class="flex h-10 w-10 items-center justify-center text-yellow-400 transition hover:scale-110"
+            title="JavaScript"
+          >
+            <span class="text-3xl font-black">JS</span>
+          </div>
+
+          <!-- เทคโนโลยี Node.js -->
+          <div
+            class="flex h-10 w-10 items-center justify-center text-green-500 transition hover:scale-110"
+            title="Node.js"
+          >
+            <svg
+              class="h-9 w-9"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              role="img"
+              aria-label="Node.js"
+            >
+              <path
+                d="M12 1.5 21.09 6.75v10.5L12 22.5l-9.09-5.25V6.75L12 1.5Zm0 2.1L5.1 7.59v8.82L12 20.4l6.9-3.99V7.59L12 3.6Zm-.04 3.02c1.73 0 2.84.58 3.8 1.52l-1.36 1.4c-.67-.7-1.4-1.1-2.44-1.1-1.85 0-3.08 1.3-3.08 3.5s1.23 3.51 3.08 3.51c1.04 0 1.77-.4 2.44-1.1l1.36 1.4c-.96.94-2.07 1.52-3.8 1.52-3.13 0-5.28-2.15-5.28-5.33s2.15-5.32 5.28-5.32Z"
+              />
+            </svg>
+          </div>
+
+          <!-- เทคโนโลยี React -->
+          <div
+            class="flex h-10 w-10 items-center justify-center text-cyan-400 transition hover:scale-110"
+            title="React"
+          >
+            <svg
+              class="h-10 w-10"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              role="img"
+              aria-label="React"
+            >
+              <circle cx="12" cy="12" r="2.2" fill="currentColor" />
+              <ellipse cx="12" cy="12" rx="10" ry="4" />
+              <ellipse
+                cx="12"
+                cy="12"
+                rx="10"
+                ry="4"
+                transform="rotate(60 12 12)"
+              />
+              <ellipse
+                cx="12"
+                cy="12"
+                rx="10"
+                ry="4"
+                transform="rotate(120 12 12)"
+              />
+            </svg>
+          </div>
+
+          <!-- เทคโนโลยี Spring -->
+          <div
+            class="flex h-10 w-10 items-center justify-center text-green-500 transition hover:scale-110"
+            title="Spring"
+          >
+            <svg
+              class="h-10 w-10"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              role="img"
+              aria-label="Spring"
+            >
+              <path
+                d="M21.8 2.2c-5.2.2-9.1 1.7-11.7 4.4-2.1 2.1-3.1 4.8-3.2 7.8-1.4.2-2.7.6-3.8 1.2 2.1.2 3.9.8 5.3 1.8 1.3 1 2.1 2.2 2.4 3.7.4-1.5.3-2.9-.3-4.1 4.2-.4 7.4-2.1 9.5-5.1 1.9-2.7 2.5-5.9 1.8-9.7ZM7.7 14.1c.1-2.5 1-4.6 2.7-6.4 1.8-1.8 4.3-3 7.5-3.6-2.2 1.3-3.9 2.8-5.1 4.5-1.2 1.8-1.8 3.7-1.8 5.7-1 .2-2.1.1-3.3-.2Z"
+              />
+            </svg>
+          </div>
+
+          <!-- เทคโนโลยี Java -->
+          <div
+            class="flex h-10 w-10 items-center justify-center text-orange-400 transition hover:scale-110"
+            title="Java"
+          >
+            <svg
+              class="h-10 w-10"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              role="img"
+              aria-label="Java"
+            >
+              <path
+                d="M12.2 2c1.3 1.7.4 3.1-.6 4.2-1.1 1.2-1.7 2.3-.4 3.7-2.5-1.1-2.9-2.8-1.7-4.5C10.5 4.2 12.1 3.6 12.2 2Zm3.2 4.8c2.3 2.2 2.6 4.3 1.5 6.1-1.1 1.7-3.1 2.5-5.2 2.5-2.3 0-4.2-.7-5.1-1.9-.3-.4-.4-.9-.2-1.4.7.7 1.8 1.1 3.2 1.1 2.5 0 4.8-1.3 5.6-3.2.5-1.1.4-2.1.2-3.2Zm-5.5 9.3c-1.4.1-2.4.6-2.4 1.2 0 .8 1.8 1.4 4 1.4s4-.6 4-1.4c0-.5-.8-1-2-1.2 1.9.1 3.3.6 3.3 1.5 0 1-2.4 1.8-5.3 1.8s-5.3-.8-5.3-1.8c0-.9 1.6-1.5 3.7-1.5Zm7.1 2.8c-.3 1.2-2.6 2.1-5.5 2.1-2.6 0-4.8-.7-5.4-1.7 1.1.5 2.8.8 4.7.8 2.6 0 5-.5 6.2-1.2Z"
+              />
+            </svg>
+          </div>
+
+          <!-- เทคโนโลยี Figma -->
+          <div
+            class="flex h-10 w-10 items-center justify-center text-pink-500 transition hover:scale-110"
+            title="Figma"
+          >
+            <svg
+              class="h-9 w-9"
+              viewBox="0 0 24 24"
+              role="img"
+              aria-label="Figma"
+            >
+              <path fill="#F24E1E" d="M8 2h4v6H8a3 3 0 1 1 0-6Z" />
+              <path fill="#FF7262" d="M8 8h4v6H8a3 3 0 1 1 0-6Z" />
+              <path fill="#A259FF" d="M8 14h4v5a3 3 0 1 1-3-5Z" />
+              <path fill="#1ABCFE" d="M12 8h4a3 3 0 1 1 0 6h-4V8Z" />
+              <path fill="#0ACF83" d="M12 2h4a3 3 0 1 1 0 6h-4V2Z" />
+            </svg>
+          </div>
+
+          <!-- เทคโนโลยี Firebase -->
+          <div
+            class="flex h-10 w-10 items-center justify-center text-yellow-400 transition hover:scale-110"
+            title="Firebase"
+          >
+            <svg
+              class="h-10 w-10"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              role="img"
+              aria-label="Firebase"
+            >
+              <path
+                d="m3.2 19.7 2.2-14.2c.1-.7 1-1 1.5-.4l2.8 3.4 1.8-6.1c.2-.7 1.2-.8 1.5-.1l7.5 17.4H3.2Zm4.4-2.2h10.6L13 7.1l-1.5 5.1-3.9-4.7-1.1 10Z"
+              />
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio" class="h-0"></section>
+
+      <section id="contact" class="h-0"></section>
+    </main>
+  </body>
+</html>
