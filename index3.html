@@ -1,464 +1,785 @@
-<!doctype html>
-<html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Thatchai Khunsricharoen - Portfolio</title>
+  <title>Thatchai Khunsricharoen — Frontend Developer</title>
 
-    <!-- ใช้ Tailwind CSS เท่านั้น -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  </head>
+  <!-- Fonts used in the reference -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <body class="bg-[#080a4f] text-white antialiased">
-    <!-- =====================================================
-         แถบนำทาง
-         ===================================================== -->
-    <header class="sticky top-0 z-50 bg-[#07073d]">
-      <nav
-        class="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4 sm:px-10 lg:px-16"
-      >
-        <a href="#home" class="text-lg font-bold tracking-tight sm:text-xl">
-          THATCHAI KHUNSRICHAROEN
-        </a>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-        <div class="hidden items-center gap-7 text-sm md:flex">
-          <a href="#portfolio" class="transition hover:text-blue-300">Work</a>
-          <a href="#about" class="transition hover:text-blue-300">About</a>
-          <a href="#contact" class="transition hover:text-blue-300">Contact</a>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              bg: "#000C58",
+              nav: "#060135",
+              input: "#050334",
+              line: "rgba(255,255,255,.14)",
+              text: "#FFFFFF",
+              muted: "#A9AFDD",
+              accent: "#7E92E8"
+            }
+          },
+          fontFamily: {
+            display: ["Anton", "sans-serif"],
+            body: ['"Noto Sans Thai"', "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --bg: #000c58;
+      --nav: #060135;
+      --input: #050334;
+      --line: rgba(255, 255, 255, 0.14);
+      --text: #ffffff;
+      --muted: #a9afdd;
+      --accent: #7e92e8;
+
+      --mobile-gutter: 29px;
+      --desktop-gutter: 48px;
+      --content-max: 1280px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Noto Sans Thai", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #11153a;
+    }
+
+    .section-border {
+      border-top: 1px solid var(--line);
+    }
+
+    .display-title {
+      font-family: "Anton", sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 0.96;
+    }
+
+    /* HEADER */
+    .site-header {
+      height: 56px;
+      background: var(--nav);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      width: min(var(--content-max), calc(100% - 96px));
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-family: "Anton", sans-serif;
+      font-size: 18px;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      transition: opacity .2s ease, color .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .section-inner {
+      width: min(var(--content-max), calc(100% - 96px));
+      margin-inline: auto;
+    }
+
+    /* BUTTONS / SOCIAL */
+    .pill-button {
+      min-height: 36px;
+      padding: 0 20px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      background: var(--accent);
+      color: #0c1237;
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .pill-button:hover {
+      background: #91a2ef;
+      transform: translateY(-1px);
+    }
+
+    .pill-button::after {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #0c1237;
+      flex: 0 0 auto;
+    }
+
+    .social-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,.10);
+      color: var(--accent);
+      text-decoration: none;
+      transition: background .2s ease, color .2s ease, transform .2s ease;
+    }
+
+    .social-circle:hover {
+      background: rgba(255,255,255,.18);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .social-circle svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 60px 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: clamp(54px, 5.1vw, 70px);
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-description {
+      margin: 16px 0 0;
+      max-width: 440px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-image {
+      width: 100%;
+      max-width: 420px;
+      height: 500px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #111;
+      justify-self: end;
+    }
+
+    .hero-image img,
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* ABOUT */
+    .about {
+      padding: 80px 0;
+    }
+
+    .about-content-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .section-heading {
+      margin: 0;
+      font-size: 44px;
+    }
+
+    .about-text-area {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .about-lead {
+      margin: 0;
+      max-width: 680px;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    .about-body {
+      margin: 0;
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .about-actions {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .about-image {
+      margin-top: 40px;
+      width: 100%;
+      height: 480px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    /* CAPABILITIES & EXPERIENCE (Split Layout) */
+    .split-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .capabilities {
+      padding: 80px 0;
+    }
+
+    .capability-description {
+      margin: 0 0 24px 0;
+      max-width: 600px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* กำหนด max-width ให้กลุ่มปุ่มสกิลตัดบรรทัดแบ่งเป็น 2 แถวสวยงาม */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      max-width: 580px;
+    }
+
+    .skill {
+      padding: 12px 24px;
+      border: 1px solid rgba(196, 168, 43, .62);
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      box-sizing: border-box;
+    }
+
+    .experience {
+      padding: 80px 0;
+    }
+
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .experience-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .experience-heading h3 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1.25;
+    }
+
+    .experience-date {
+      color: var(--muted);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .experience-text {
+      margin: 12px 0 0;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* CONTACT */
+    .contact {
+      padding: 80px 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-copy {
+      margin: 20px 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .contact-copy a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .contact-copy a:hover {
+      color: var(--accent);
+    }
+
+    .contact-socials {
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .contact-socials a {
+      color: var(--accent);
+      transition: color .2s ease, transform .2s ease;
+    }
+
+    .contact-socials a:hover {
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .contact-socials svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-field label {
+      display: block;
+      margin-bottom: 8px;
+      color: rgba(255,255,255,.85);
+      font-size: 14px;
+    }
+
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      outline: none;
+      background: var(--input);
+      color: #fff;
+      font-family: inherit;
+      font-size: 14px;
+      padding: 0 16px;
+      box-sizing: border-box;
+      transition: border-color .2s ease;
+    }
+
+    .form-field input {
+      height: 48px;
+    }
+
+    .form-field textarea {
+      min-height: 140px;
+      padding-top: 14px;
+      resize: vertical;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .submit-button {
+      align-self: flex-start;
+      min-width: 140px;
+      height: 52px;
+      margin-top: 8px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #11153a;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .submit-button:hover {
+      background: #91a2ef;
+      transform: translateY(-1px);
+    }
+
+    .footer {
+      margin-top: 60px;
+      padding: 30px 0;
+      border-top: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .footer p {
+      margin: 0;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .nav-inner,
+      .section-inner {
+        width: min(100% - 48px, 760px);
+      }
+
+      .hero-grid,
+      .about-content-grid,
+      .split-layout,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero-image {
+        justify-self: center;
+        max-width: 100%;
+        height: 400px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .site-header {
+        display: none;
+      }
+
+      .nav-inner,
+      .section-inner {
+        width: calc(100% - (var(--mobile-gutter) * 2));
+      }
+
+      .hero-title {
+        font-size: 36px;
+      }
+
+      .section-heading {
+        font-size: 32px;
+      }
+
+      .hero-image,
+      .about-image {
+        height: 320px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <a class="brand" href="#home">Thatchai Khunsricharoen</a>
+
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="section-inner hero-grid">
+        <div class="hero-copy">
+          <h1 class="display-title hero-title">
+            <span>Hi, I am</span>
+            <span>Thatchai Khunsricharoen.</span>
+          </h1>
+
+          <p lang="th" class="hero-description">
+            นักพัฒนาเว็บไซต์ฝั่งฟรอนท์เอนด์จากประเทศไทย<br>
+            ที่มีความหลงใหลในการสร้างเว็บไซต์ที่เข้าถึงได้และเป็นมิตรกับผู้ใช้
+          </p>
+
+          <div class="hero-actions">
+            <a class="pill-button" href="#contact">Contact me</a>
+
+            <a class="social-circle" href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A2.01 2.01 0 0 0 3.25 5c0 1.1.9 2 2 2s2-.9 2-2-.9-2-2-2ZM20.75 13.4c0-3.47-1.85-5.09-4.32-5.09-1.99 0-2.88 1.1-3.38 1.88V8.5H9.67V20h3.38v-6.04c0-1.59.3-3.13 2.27-3.13 1.94 0 1.96 1.82 1.96 3.23V20h3.38l.09-6.6Z"/>
+              </svg>
+            </a>
+
+            <a class="social-circle" href="#" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.2-3.37-1.2-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.35 1.12 2.93.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.16 9.16 0 0 1 12 8.15c.85 0 1.71.12 2.51.36 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.35 4.8-4.58 5.05.36.32.68.94.68 1.9v2.81c0 .27.18.59.69.49A10.23 10.23 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"/>
+              </svg>
+            </a>
+          </div>
         </div>
 
-        <!-- แถบนำทางบนมือถือ -->
-        <div class="flex items-center gap-4 md:hidden">
-          <a href="#portfolio" class="text-xs transition hover:text-blue-300"
-            >Work</a
-          >
-          <a href="#about" class="text-xs transition hover:text-blue-300"
-            >About</a
-          >
-          <a href="#contact" class="text-xs transition hover:text-blue-300"
-            >Contact</a
-          >
+        <div class="hero-image">
+          <img src="./images/interv1.png" alt="Portrait of Progarmmer" loading="eager">
         </div>
-      </nav>
-    </header>
+      </div>
+    </section>
 
-    <main>
-      <!-- =====================================================
-             หน้าแรก / ส่วนหลักด้านบน
-             ===================================================== -->
-      <section id="home" class="border-b border-white/15">
-        <div
-          class="mx-auto grid min-h-[calc(100vh-65px)] max-w-[1400px] items-center gap-12 px-6 py-14 sm:px-10 lg:grid-cols-2 lg:px-16 lg:py-20"
-        >
-          <div class="order-2 lg:order-1">
-            <h1
-              class="max-w-xl text-5xl font-black uppercase leading-[0.9] tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl"
-            >
-              Hi, I am
-              <br />
-              Misster Double T.
-            </h1>
+    <!-- ABOUT -->
+    <section id="about" class="about section-border">
+      <div class="section-inner">
+        <div class="about-content-grid">
+          <h2 class="display-title section-heading">About me</h2>
 
-            <p
-              class="mt-5 max-w-xl text-sm leading-6 text-white/75 sm:text-base"
-            >
-              นักพัฒนาเว็บไซต์ผู้พัฒนาซอฟต์แวร์จากประเทศไทย
-              <br class="hidden sm:block" />
-              ที่มีความสนใจในการสร้างเว็บไซต์ที่ใช้งานง่ายและมีประสบการณ์ผู้ใช้ที่ดีเป็นมิตรกับผู้ใช้
+          <div class="about-text-area">
+            <p lang="th" class="about-lead">
+              ผมเป็นนักพัฒนาเว็บไซต์ฝั่งฟรอนท์เอนด์ที่ทำงานอยู่ในกรุงเทพฯ กำลังมองหาโอกาสที่น่าตื่นเต้นในการทำงานมีพื้นฐานการศึกษาด้านวิศวกรรมซอฟต์แวร์
             </p>
 
-            <div class="mt-7 flex flex-wrap items-center gap-3">
-              <a
-                href="#contact"
-                class="inline-flex items-center gap-5 rounded-full bg-[#7c9be8] px-5 py-3 text-xs font-bold text-[#080a20] transition hover:scale-105 hover:bg-[#9bb5ff]"
-              >
-                CONTACT ME
-                <span class="h-2 w-2 rounded-full bg-[#080a20]"></span>
-              </a>
+            <p lang="th" class="about-body">
+              ชอบให้ความสำคัญกับการเข้าถึง (accessibility) เมื่อพัฒนาเว็บไซต์ มีความกระตือรือร้นและอยากรู้อยากเห็นเกี่ยวกับการแก้ปัญหาต่างๆ ปัจจุบันกำลังศึกษาเรียนรู้เกี่ยวกับ React.js และการออกแบบเว็บ เมื่อไม่ได้เขียนโปรแกรม ผมชอบเล่นฟุตบอล ถ่ายภาพ และเล่นเกม FIFA, Diablo และกำลังเรียนรู้เพิ่มเติมเพื่อพัฒนาทักษะอยู่เสมอ
+            </p>
 
-              <!-- ไอคอน LinkedIn -->
-              <a
-                href="#"
-                aria-label="LinkedIn"
-                class="flex h-10 w-10 items-center justify-center rounded-full bg-[#20243b] text-[#7c9be8] transition hover:scale-110 hover:bg-[#7c9be8] hover:text-[#080a20]"
-              >
-                <svg
-                  class="h-5 w-5"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A2 2 0 1 0 5.25 7a2 2 0 0 0 0-4ZM20.75 13.4c0-3.47-1.85-5.09-4.32-5.09-1.99 0-2.88 1.1-3.38 1.88V8.5H9.67V20h3.38v-6.04c0-1.59.3-3.13 2.27-3.13 1.94 0 1.96 1.82 1.96 3.23V20h3.38l.09-6.6Z"
-                  />
+            <div class="about-actions">
+              <a class="pill-button" href="#" download>Download resume</a>
+
+              <a class="social-circle" href="#" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A2.01 2.01 0 0 0 3.25 5c0 1.1.9 2 2 2s2-.9 2-2-.9-2-2-2ZM20.75 13.4c0-3.47-1.85-5.09-4.32-5.09-1.99 0-2.88 1.1-3.38 1.88V8.5H9.67V20h3.38v-6.04c0-1.59.3-3.13 2.27-3.13 1.94 0 1.96 1.82 1.96 3.23V20h3.38l.09-6.6Z"/>
                 </svg>
               </a>
 
-              <!-- ไอคอน GitHub -->
-              <a
-                href="#"
-                aria-label="GitHub"
-                class="flex h-10 w-10 items-center justify-center rounded-full bg-[#20243b] text-[#7c9be8] transition hover:scale-110 hover:bg-[#7c9be8] hover:text-[#080a20]"
-              >
-                <svg
-                  class="h-5 w-5"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.2-3.37-1.2-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.35 1.12 2.93.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.16 9.16 0 0 1 12 8.15c.85 0 1.71.12 2.51.36 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.35 4.8-4.58 5.05.36.32.68.94.68 1.9v2.81c0 .27.18.59.69.49A10.23 10.23 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"
-                    clip-rule="evenodd"
-                  />
+              <a class="social-circle" href="#" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.2-3.37-1.2-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.35 1.12 2.93.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.16 9.16 0 0 1 12 8.15c.85 0 1.71.12 2.51.36 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.35 4.8-4.58 5.05.36.32.68.94.68 1.9v2.81c0 .27.18.59.69.49A10.23 10.23 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"/>
                 </svg>
               </a>
             </div>
           </div>
+        </div>
 
-          <!--
-                เปลี่ยนเส้นทางรูปภาพเป็นไฟล์จริงของคุณ
-                ตัวอย่าง:
-                images/profile.png
-              -->
-          <div class="order-1 flex justify-center lg:order-2 lg:justify-end">
-            <img
-              src="./images/interv1.png"
-              alt="devpicture"
-              class="w-full max-w-[340px] rounded-xl object-cover sm:max-w-[430px] lg:max-w-[500px]"
-            />
+        <div class="about-image">
+          <img src="./images/interv2.png" alt="Developer working at a desk" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section id="capabilities" class="capabilities section-border">
+      <div class="section-inner split-layout">
+        <h2 class="display-title section-heading">My capabilities</h2>
+
+        <div>
+          <p lang="th" class="capability-description">
+            ผมมองหาโอกาสในการเพิ่มทักษะใหม่ๆ อยู่เสมอ ทั้งการพัฒนาฟรอนท์เอนด์ แบ็คเอนด์ การออกแบบ UX/UI ฐานข้อมูล
+          </p>
+
+          <div class="skills" aria-label="Skills">
+            <span class="skill">HTML</span>
+            <span class="skill">CSS</span>
+            <span class="skill">JavaScript</span>
+            <span class="skill">Flutter</span>
+            <span class="skill">Dart</span>
+            <span class="skill">IoT</span>
+            <span class="skill">React</span>
+            <span class="skill">Database</span>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="about" class="border-b border-white/15">
-        <div
-          class="mx-auto max-w-[1300px] px-6 py-14 sm:px-10 lg:px-16 lg:py-16"
-        >
-          <div
-            class="grid grid-cols-[0.8fr_1.5fr] items-start gap-8 sm:gap-10 max-[599px]:grid-cols-1"
-          >
-            <h2
-              class="text-4xl font-black uppercase leading-none sm:text-5xl lg:text-6xl"
-            >
-              About Me
-            </h2>
+    <!-- EXPERIENCE -->
+    <section id="work" class="experience section-border">
+      <div class="section-inner split-layout">
+        <h2 class="display-title section-heading">My experience</h2>
 
-            <div>
-              <h3 class="max-w-3xl text-xl font-bold leading-7 sm:text-2xl">
-                ผมเป็นนักพัฒนาเว็บไซต์ฝั่งฟรอนท์เอนด์ที่ทำงานอยู่ในกรุงเทพฯ
-                กำลังมองหาโอกาสที่น่าตื่นเต้นในการ
-                ทำงานมีพื้นฐานการศึกษาด้านวิศวกรรมซอฟต์แวร์
-              </h3>
-
-              <p class="mt-4 max-w-3xl text-sm leading-6 text-white/65">
-                ชอบให้ความสำคัญกับการเข้าถึง (accessibility) เมื่อพัฒนาเว็บไซต์
-                มีความกระตือรือร้นและอยากรู้ อยากเห็นเกี่ยวกับการแก้ปัญหาต่างๆ
-                ปัจจุบันกำลังศึกษาเรียนรู้เกี่ยวกับ React.js
-                และการออกแบบเว็บไซต์เล็กน้อยเมื่อไม่ได้เขียนโปรแกรม ผมชอบฟังเพลง
-                กินสตรีทฟู้ด และร้องเพลงคาราโอเกะในเวลาว่าง
-                กำลังเรียนรู้เพิ่มเติมเพื่อพัฒนาทักษะอยู่เสมอ
-              </p>
-
-              <div class="mt-6 flex flex-wrap items-center gap-3">
-                <a
-                  href="#"
-                  class="inline-flex items-center gap-4 rounded-full bg-[#7c9be8] px-5 py-3 text-[10px] font-bold text-[#080a20] transition hover:bg-[#9bb5ff]"
-                >
-                  DOWNLOAD RESUME
-                  <span class="h-2 w-2 rounded-full bg-[#080a20]"></span>
-                </a>
-
-                <a
-                  href="#"
-                  aria-label="LinkedIn"
-                  class="flex h-9 w-9 items-center justify-center rounded-full bg-[#20243b] text-[#7c9be8] transition hover:bg-[#7c9be8] hover:text-[#080a20]"
-                >
-                  in
-                </a>
-
-                <a
-                  href="#"
-                  aria-label="GitHub"
-                  class="flex h-9 w-9 items-center justify-center rounded-full bg-[#20243b] text-[#7c9be8] transition hover:bg-[#7c9be8] hover:text-[#080a20]"
-                >
-                  <svg
-                    class="h-4 w-4"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.2-3.37-1.2-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.35 1.12 2.93.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.16 9.16 0 0 1 12 8.15c.85 0 1.71.12 2.51.36 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.35 4.8-4.58 5.05.36.32.68.94.68 1.9v2.81c0 .27.18.59.69.49A10.23 10.23 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </a>
-              </div>
+        <div class="experience-list">
+          <article class="experience-item">
+            <div class="experience-heading">
+              <h3>Freelance Developer</h3>
+              <span class="experience-date">Nov 2023 — Present</span>
             </div>
-          </div>
+            <p lang="th" class="experience-text">
+              พัฒนาและปรับปรุงส่วนติดต่อผู้ใช้สำหรับเว็บแอปพลิเคชันโดยใช้ React.js ทำงานร่วมกับทีมออกแบบ UX/UI เพื่อสร้างประสบการณ์ผู้ใช้ที่น่าประทับใจ ปรับปรุงความเร็วในการโหลดเว็บไซต์ด้วยเทคนิคการเพิ่มประสิทธิภาพต่างๆ ร่วมพัฒนาและดูแลไลบรารีคอมโพเนนต์ภายในองค์กร
+            </p>
+          </article>
 
-          <!-- รูปภาพส่วนเกี่ยวกับฉัน -->
-          <div class="mt-10">
-            <img
-              src="./images/interv2.png"
-              alt="devpicture"
-              class="h-auto max-h-[560px] w-full rounded-xl object-cover"
-            />
-          </div>
+          <article class="experience-item">
+            <div class="experience-heading">
+              <h3>Front-End Intern</h3>
+              <span class="experience-date">Sep 2023 — Nov 2023</span>
+            </div>
+            <p lang="th" class="experience-text">
+              พัฒนาเว็บไซต์ลูกค้าโดยใช้ HTML, CSS และ JavaScript ช่วยปรับปรุงการเข้าถึง (Accessibility) ของเว็บไซต์ให้สอดคล้องกับมาตรฐาน WCAG ทำงานร่วมกับทีมแบ็คเอนด์เพื่อเชื่อมต่อ API
+            </p>
+          </article>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="capabilities" class="border-b border-white/15">
-        <div
-          class="mx-auto grid max-w-[1300px] gap-8 px-6 py-14 sm:px-10 lg:grid-cols-[0.8fr_1.5fr] lg:px-16"
-        >
-          <h2 class="text-4xl font-black uppercase leading-none sm:text-5xl">
-            My Capabilities
-          </h2>
-
+    <!-- CONTACT -->
+    <section id="contact" class="contact section-border">
+      <div class="section-inner">
+        <div class="contact-grid">
           <div>
-            <p class="max-w-3xl text-sm leading-6 text-white/65">
-              ผมมองหาโอกาสในการเพิ่มทักษะใหม่ๆ อยู่เสมอ ทั้งการพัฒนาฟรอนท์เอนด์
-              แบล็กเอนด์ การออกแบบ UX/UI ฐานข้อมูล
-            </p>
+            <h2 class="display-title section-heading contact-heading">Let's connect</h2>
 
-            <div class="mt-6 flex flex-wrap gap-2">
-              <span
-                class="rounded-full border border-white/20 px-5 py-2 text-xs"
-                >HTML</span
-              >
-              <span
-                class="rounded-full border border-white/20 px-5 py-2 text-xs"
-                >CSS</span
-              >
-              <span
-                class="rounded-full border border-white/20 px-5 py-2 text-xs"
-                >JAVASCRIPT</span
-              >
-              <span
-                class="rounded-full border border-white/20 px-5 py-2 text-xs"
-                >FLUTTER</span
-              >
-              <span
-                class="rounded-full border border-white/20 px-5 py-2 text-xs"
-                >DART</span
-              >
-              <span
-                class="rounded-full border border-white/20 px-5 py-2 text-xs"
-                >IoT</span
-              >
-              <span
-                class="rounded-full border border-white/20 px-5 py-2 text-xs"
-                >REACT</span
-              >
-              <span
-                class="rounded-full border border-white/20 px-5 py-2 text-xs"
-                >DATABASE</span
-              >
+            <div class="contact-copy">
+              <div>Say hello at <a href="mailto:s6619410001@sau.ac.th">s6619410001@sau.ac.th</a></div>
+              <div>For more info, here's my <a href="#">resume</a></div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <section id="portfolio" class="border-b border-white/15">
-        <div
-          class="mx-auto grid max-w-[1300px] gap-10 px-6 py-14 sm:px-10 lg:grid-cols-[0.8fr_1.5fr] lg:px-16 lg:py-20"
-        >
-          <h2
-            class="text-4xl font-black uppercase leading-none sm:text-5xl lg:text-6xl"
-          >
-            My Experience
-          </h2>
-
-          <div class="space-y-10">
-            <article>
-              <div
-                class="flex flex-col justify-between gap-2 sm:flex-row sm:items-start"
-              >
-                <h3 class="text-xl font-medium sm:text-2xl">
-                  Freelance Developer
-                </h3>
-
-                <span class="text-sm text-white/65"> Nov 2023 — Present </span>
-              </div>
-
-              <p class="mt-4 text-sm leading-7 text-white/70 sm:text-base">
-                พัฒนาและปรับปรุงส่วนติดต่อผู้ใช้สำหรับเว็บแอปพลิเคชันโดยใช้
-                React.js ทำงานร่วมกับทีมออกแบบ UX/UI
-                เพื่อสร้างประสบการณ์ผู้ใช้ที่น่าประทับใจ
-                ปรับปรุงความเร็วในการโหลดเว็บไซต์ด้วยเทคนิคการเพิ่มประสิทธิภาพต่างๆ
-                ร่วมพัฒนาและดูแลโครงสร้างภายในองค์กร
-              </p>
-            </article>
-
-            <article>
-              <div
-                class="flex flex-col justify-between gap-2 sm:flex-row sm:items-start"
-              >
-                <h3 class="text-xl font-medium sm:text-2xl">
-                  Front-End Intern
-                </h3>
-
-                <span class="text-sm text-white/65"> Sep 2023 — Nov 2023 </span>
-              </div>
-
-              <p class="mt-4 text-sm leading-7 text-white/70 sm:text-base">
-                พัฒนาเว็บไซต์ลูกค้าโดยใช้ HTML, CSS และ JavaScript
-                ช่วยปรับปรุงการเข้าถึง (Accessibility)
-                ของเว็บไซต์ให้สอดคล้องกับมาตรฐาน WCAG
-                และทำงานร่วมกับทีมแบ็กเอนด์เพื่อเชื่อมต่อ API
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="border-b border-white/15">
-        <div
-          class="mx-auto grid max-w-[1300px] gap-12 px-6 py-14 sm:px-10 lg:grid-cols-2 lg:px-16 lg:py-20"
-        >
-          <!-- ข้อมูลติดต่อ -->
-          <div>
-            <h2
-              class="text-4xl font-black uppercase leading-none sm:text-5xl lg:text-6xl"
-            >
-              Let’s Connect
-            </h2>
-
-            <p class="mt-6 text-sm text-white/70">
-              Say hello at
-              <a
-                href="mailto:chanintornc@sau.ac.th"
-                class="text-white hover:text-[#7c9be8]"
-              >
-                s6619410001@sau.ac.th
-              </a>
-            </p>
-
-            <p class="mt-3 text-sm text-white/70">
-              For more info, here’s my
-              <a href="#" class="text-white hover:text-[#7c9be8]"> resume </a>
-            </p>
-
-            <div class="mt-8 flex items-center gap-6 text-[#7c9be8]">
-              <a
-                href="#"
-                aria-label="LinkedIn"
-                class="text-xl font-bold transition hover:scale-110"
-              >
-                in
-              </a>
-
-              <a
-                href="#"
-                aria-label="GitHub"
-                class="transition hover:scale-110"
-              >
-                <svg
-                  class="h-6 w-6"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.2-3.37-1.2-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.35 1.12 2.93.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.16 9.16 0 0 1 12 8.15c.85 0 1.71.12 2.51.36 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.35 4.8-4.58 5.05.36.32.68.94.68 1.9v2.81c0 .27.18.59.69.49A10.23 10.23 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"
-                    clip-rule="evenodd"
-                  />
+            <div class="contact-socials" aria-label="Social links">
+              <a href="#" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A2.01 2.01 0 0 0 3.25 5c0 1.1.9 2 2 2s2-.9 2-2-.9-2-2-2ZM20.75 13.4c0-3.47-1.85-5.09-4.32-5.09-1.99 0-2.88 1.1-3.38 1.88V8.5H9.67V20h3.38v-6.04c0-1.59.3-3.13 2.27-3.13 1.94 0 1.96 1.82 1.96 3.23V20h3.38l.09-6.6Z"/>
                 </svg>
               </a>
 
-              <a
-                href="#"
-                aria-label="X"
-                class="text-2xl transition hover:scale-110"
-              >
-                𝕏
+              <a href="#" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.2-3.37-1.2-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.35 1.12 2.93.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.16 9.16 0 0 1 12 8.15c.85 0 1.71.12 2.51.36 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.35 4.8-4.58 5.05.36.32.68.94.68 1.9v2.81c0 .27.18.59.69.49A10.23 10.23 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"/>
+                </svg>
               </a>
 
-              <a
-                href="#"
-                aria-label="Instagram"
-                class="text-xl transition hover:scale-110"
-              >
-                ◎
+              <a href="#" aria-label="X">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M18.9 2H22l-6.77 7.74L23.2 22h-6.24l-4.89-6.4L6.48 22H3.37l7.24-8.28L3 2h6.4l4.42 5.84L18.9 2Zm-1.1 17.88h1.73L8.47 4h-1.8l11.13 15.88Z"/>
+                </svg>
+              </a>
+
+              <a href="#" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5"/>
+                  <circle cx="12" cy="12" r="4"/>
+                  <circle cx="17.2" cy="6.8" r="1"/>
+                </svg>
               </a>
             </div>
           </div>
 
-          <form action="#" method="post" class="space-y-6">
-            <div>
-              <label for="name" class="mb-2 block text-sm text-white/75">
-                Name
-              </label>
-
-              <input
-                id="name"
-                name="name"
-                type="text"
-                required
-                class="w-full rounded-md border border-transparent bg-[#05043a] px-4 py-3 text-sm text-white outline-none transition focus:border-[#7c9be8]"
-              />
+          <form class="contact-form" id="contactForm">
+            <div class="form-field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required>
             </div>
 
-            <div>
-              <label for="email" class="mb-2 block text-sm text-white/75">
-                Email
-              </label>
-
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                class="w-full rounded-md border border-transparent bg-[#05043a] px-4 py-3 text-sm text-white outline-none transition focus:border-[#7c9be8]"
-              />
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
             </div>
 
-            <div>
-              <label for="subject" class="mb-2 block text-sm text-white/75">
-                Subject
-              </label>
-
-              <input
-                id="subject"
-                name="subject"
-                type="text"
-                required
-                class="w-full rounded-md border border-transparent bg-[#05043a] px-4 py-3 text-sm text-white outline-none transition focus:border-[#7c9be8]"
-              />
+            <div class="form-field">
+              <label for="subject">Subject</label>
+              <input id="subject" name="subject" type="text">
             </div>
 
-            <div>
-              <label for="message" class="mb-2 block text-sm text-white/75">
-                Message
-              </label>
-
-              <textarea
-                id="message"
-                name="message"
-                rows="6"
-                required
-                class="w-full resize-none rounded-md border border-transparent bg-[#05043a] px-4 py-3 text-sm text-white outline-none transition focus:border-[#7c9be8]"
-              ></textarea>
+            <div class="form-field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
             </div>
 
-            <button
-              type="submit"
-              class="rounded-full bg-[#7c9be8] px-9 py-4 text-sm font-bold text-[#080a20] transition hover:scale-105 hover:bg-[#9bb5ff]"
-            >
-              SUBMIT
-            </button>
+            <button class="submit-button" type="submit">Submit</button>
           </form>
         </div>
-      </section>
-    </main>
 
-    <footer class="px-6 py-8 text-center text-sm text-white/80">
-      © 2025 Created by SAU-Dev-Team
-    </footer>
-  </body>
+        <footer class="footer">
+          <p>© 2025 Created by SAU-Dev-Team</p>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+    });
+  </script>
+
+</body>
 </html>

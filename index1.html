@@ -1,17 +1,15 @@
-```html
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Thatchai Khunsricharoen</title>
+    <title>Mister Double T.</title>
 
     <style>
       /* =====================================================
-           ตัวแปรส่วนกลาง
+           GLOBAL VARIABLES
            ===================================================== */
-
       :root {
         --bg-color: #080808;
         --nav-color: #1b1b1b;
@@ -23,18 +21,12 @@
         --green: #38a900;
         --green-hover: #45c400;
 
-        /*
-             * ความกว้างสูงสุดของเนื้อหา
-             * เว็บไซต์จะขยายได้บนหน้าจอขนาดใหญ่
-             * แต่จะหยุดขยายเมื่อถึงขนาดนี้
-             */
         --container-max: 1180px;
       }
 
       /* =====================================================
-           รีเซ็ตค่าเริ่มต้น
+           RESET
            ===================================================== */
-
       * {
         margin: 0;
         padding: 0;
@@ -47,15 +39,31 @@
 
       body {
         min-height: 100vh;
-
-        background: var(--bg-color);
+        background-color: var(--bg-color);
+        background-image:
+          radial-gradient(
+            circle at 85% 15%,
+            rgba(56, 169, 0, 0.05) 0%,
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 10% 80%,
+            rgba(56, 169, 0, 0.03) 0%,
+            transparent 45%
+          ),
+          linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.015) 1px,
+            transparent 1px
+          );
+        background-size:
+          100% 100%,
+          100% 100%,
+          40px 40px,
+          40px 40px;
         color: var(--text-color);
-
         font-family: Arial, Helvetica, sans-serif;
-
-        /*
-             * Prevent horizontal scrolling on small screens.
-             */
         overflow-x: hidden;
       }
 
@@ -76,74 +84,48 @@
       }
 
       /* =====================================================
-           คอนเทนเนอร์แบบตอบสนอง
+           RESPONSIVE CONTAINER
            ===================================================== */
-
       .container {
-        /*
-             * ใช้ความกว้าง 88% ของหน้าจอบนอุปกรณ์ขนาดเล็ก
-             * เพื่อป้องกันไม่ให้เนื้อหาชิดขอบหน้าจอ
-             */
         width: 88%;
-
-        /*
-             * บนหน้าจอขนาดใหญ่ เนื้อหาสามารถขยายให้กว้างขึ้นได้
-             */
         max-width: var(--container-max);
-
         margin: 0 auto;
       }
 
       /* =====================================================
-           แถบนำทาง
+           NAVIGATION
            ===================================================== */
-
       .navbar {
         width: 100%;
-
         min-height: 47px;
-
         display: flex;
         align-items: center;
         justify-content: center;
-
         background: var(--nav-color);
-
         border-radius: 0 0 5px 5px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
       }
 
       .nav-content {
         width: 100%;
-
         display: flex;
         align-items: center;
         justify-content: center;
-
         gap: clamp(20px, 4vw, 55px);
       }
 
       .nav-links {
         display: flex;
         align-items: center;
-
         gap: clamp(20px, 4vw, 50px);
-
         list-style: none;
       }
 
       .nav-links a {
         color: #777777;
-
-        /*
-             * Responsive font size.
-             * It can slightly increase on larger screens.
-             */
         font-size: clamp(8px, 0.7vw, 11px);
-
         letter-spacing: 0.4px;
-
         white-space: nowrap;
-
         transition: 0.25s ease;
       }
 
@@ -151,12 +133,13 @@
         color: #ffffff;
       }
 
+      /* =====================================================
+           SOCIAL ICONS
+           ===================================================== */
       .social-links {
         display: flex;
         align-items: center;
-
         gap: clamp(10px, 1.5vw, 18px);
-
         color: #666666;
       }
 
@@ -164,474 +147,266 @@
         display: flex;
         align-items: center;
         justify-content: center;
-
         transition: 0.25s ease;
       }
 
       .social-links a:hover {
         color: #ffffff;
-
         transform: translateY(-1px);
       }
 
       .social-icon {
         width: clamp(10px, 1vw, 14px);
         height: clamp(10px, 1vw, 14px);
-
         fill: currentColor;
       }
 
       /* =====================================================
-           ส่วนหลักด้านบน
+           HERO SECTION
            ===================================================== */
-
       .hero {
-        /*
-             * ส่วนหลักด้านบนใช้ความกว้างหน้าจอที่มีอยู่
-             * แทนการกำหนดเลย์เอาต์ตายตัวที่ 694px
-             */
         min-height: calc(100vh - 47px);
-
         display: grid;
-
-        /*
-             * พื้นที่ข้อความและพื้นที่รูปภาพ
-             * รูปภาพจะรักษาสัดส่วนตามหน้าจอ
-             */
         grid-template-columns: minmax(0, 1fr) minmax(260px, 380px);
-
         align-items: center;
-
         gap: clamp(40px, 7vw, 100px);
-
         padding-top: clamp(30px, 5vw, 70px);
         padding-bottom: clamp(50px, 8vw, 100px);
       }
-
-      /* =====================================================
-           ข้อความส่วนหลักด้านบน
-           ===================================================== */
 
       .hero-text {
         align-self: center;
       }
 
       .hero-text h1 {
-        /*
-             * หัวข้อที่ปรับตามขนาดหน้าจอ
-             */
         font-size: clamp(28px, 3.2vw, 52px);
-
         line-height: 1;
-
         font-weight: 700;
-
         letter-spacing: -1.5px;
-
         margin-bottom: clamp(10px, 1vw, 16px);
       }
 
       .hero-text h2 {
         font-size: clamp(25px, 3vw, 46px);
-
         line-height: 1;
-
         font-weight: 700;
-
         letter-spacing: -1.2px;
-
         margin-bottom: clamp(8px, 1vw, 14px);
       }
 
       .hero-description {
-        /*
-             * คำอธิบายจะขยายขึ้นเล็กน้อยตาม
-             * ขนาดหน้าจอที่มีอยู่
-             */
         width: min(100%, 480px);
-
         color: var(--text-gray);
-
         font-family: "Courier New", monospace;
-
         font-size: clamp(8px, 0.75vw, 11px);
-
         line-height: 1.75;
-
         margin-bottom: clamp(15px, 2vw, 25px);
       }
 
       /* =====================================================
-           ปุ่มเริ่มต้น
+           GET STARTED BUTTON
            ===================================================== */
-
       .start-button {
         width: clamp(175px, 16vw, 230px);
-
         height: clamp(40px, 3.5vw, 50px);
-
         display: flex;
         align-items: center;
         justify-content: center;
-
         gap: 8px;
-
         border: none;
         border-radius: 3px;
-
         background: var(--green);
         color: #ffffff;
-
         font-family: "Courier New", monospace;
-
         font-size: clamp(10px, 0.8vw, 13px);
-
         font-weight: bold;
-
         cursor: pointer;
-
         box-shadow: 0 8px 25px rgba(56, 169, 0, 0.18);
-
         transition: 0.25s ease;
       }
 
       .start-button:hover {
         background: var(--green-hover);
-
         transform: translateY(-2px);
-
         box-shadow: 0 10px 30px rgba(56, 169, 0, 0.38);
       }
 
       .arrow {
-        /*
-             * แก้ไข: เดิมกำหนดขนาดไว้คงที่ 16px ในขณะที่ข้อความอื่น
-             * ในปุ่มและส่วนอื่นของหน้าปรับขนาดด้วย clamp() เมื่อตัวปุ่ม
-             * มีขนาดเล็ก ลูกศรจึงใหญ่เกินไปเมื่อเทียบกับข้อความ
-             * ตอนนี้ลูกศรจะปรับขนาดตาม font-size ของ .start-button
-             */
         font-size: clamp(13px, 1.3vw, 18px);
       }
 
       /* =====================================================
-           รูปโปรไฟล์
+           PROFILE IMAGE
            ===================================================== */
-
       .profile {
-        /*
-             * แทนการกำหนดขนาดคงที่ 216px
-             * รูปภาพจะปรับขนาดตามหน้าจอ
-             */
         width: clamp(220px, 25vw, 360px);
-
         aspect-ratio: 1 / 1;
-
         overflow: hidden;
-
         border-radius: 50%;
-
         background: #222222;
-
         justify-self: center;
+        box-shadow:
+          0 10px 40px rgba(0, 0, 0, 0.6),
+          0 0 0 1px rgba(255, 255, 255, 0.05);
       }
 
       .profile img {
         width: 100%;
         height: 100%;
-
         object-fit: cover;
       }
 
       /* =====================================================
-           ร่วมงานกับ
+           WORKED WITH
            ===================================================== */
-
       .worked-with {
-        /*
-             * เพิ่มพื้นที่ว่างให้ส่วนนี้
-             * โดยไม่บังคับความสูงแบบตายตัว
-             */
         padding-bottom: clamp(30px, 5vw, 70px);
       }
 
       .worked-title {
         margin-bottom: 12px;
-
         color: #999999;
-
         font-family: "Courier New", monospace;
-
         font-size: clamp(8px, 0.7vw, 11px);
       }
 
       .company-list {
         display: grid;
-
         grid-template-columns: repeat(5, 1fr);
-
         gap: clamp(10px, 2vw, 25px);
       }
 
       .company {
         min-height: clamp(38px, 4vw, 52px);
-
         display: flex;
         align-items: center;
         justify-content: center;
-
-        gap: 8px;
-
         border: 1px solid var(--border-color);
-
         border-radius: 4px;
-
-        color: #484848;
-
-        font-size: clamp(10px, 1vw, 14px);
-
-        font-weight: 700;
-
+        background: rgba(25, 25, 25, 0.4);
         transition: 0.25s ease;
+        padding: 0 10px;
       }
 
       .company:hover {
-        color: #777777;
-
         border-color: #3a3a3a;
+        background: rgba(35, 35, 35, 0.6);
       }
 
-      /*
-           * ขนาดของไอคอนบริษัท
-           */
-      .company-icon {
-        width: clamp(12px, 1.1vw, 16px);
-        height: clamp(12px, 1.1vw, 16px);
-
-        flex-shrink: 0;
-
-        fill: currentColor;
-      }
-
-      .clickup {
-        font-size: clamp(9px, 0.9vw, 13px);
-      }
-
-      .dropbox {
-        font-size: clamp(9px, 0.9vw, 13px);
-      }
-
-      .paychex {
-        font-size: clamp(9px, 0.9vw, 13px);
-
-        font-style: italic;
-      }
-
-      .elastic {
-        font-size: clamp(9px, 0.9vw, 13px);
-
-        font-weight: 400;
-      }
-
-      .stripe {
-        font-size: clamp(13px, 1.3vw, 18px);
-
-        font-weight: 800;
+      .company-logo {
+        max-height: clamp(16px, 1.8vw, 24px);
+        width: auto;
+        object-fit: contain;
       }
 
       /* =====================================================
-           แท็บเล็ต
+           RESPONSIVE (TABLET & MOBILE)
            ===================================================== */
-
       @media (max-width: 900px) {
         .container {
           width: 90%;
         }
-
         .nav-content {
           gap: 20px;
         }
-
         .nav-links {
           gap: 20px;
         }
-
         .hero {
-          grid-template-columns:
-            minmax(0, 1fr)
-            minmax(200px, 280px);
-
+          grid-template-columns: minmax(0, 1fr) minmax(200px, 280px);
           gap: 35px;
         }
-
         .profile {
           width: clamp(190px, 28vw, 280px);
         }
-
-        /*
-             * แก้ไข: ที่ความกว้างระดับแท็บเล็ตจนถึง 650px ตารางบริษัท
-             * ยังถูกบังคับให้มี 5 คอลัมน์ ทำให้ป้ายแต่ละรายการแคบมาก
-             * ก่อนจะเปลี่ยนเป็นเลย์เอาต์ 2 คอลัมน์บนมือถือที่ 650px
-             * การใช้ 3 คอลัมน์ช่วยให้ป้ายยังอ่านได้ในช่วงนี้
-             */
         .company-list {
           grid-template-columns: repeat(3, 1fr);
         }
       }
 
-      /* =====================================================
-           มือถือ
-           ===================================================== */
-
       @media (max-width: 650px) {
-        /* ---------------------------------------------
-               แถบนำทางบนมือถือ
-               --------------------------------------------- */
-
         .navbar {
           padding: 12px 10px;
         }
-
         .nav-content {
           flex-wrap: wrap;
-
           gap: 10px 18px;
         }
-
         .nav-links {
           width: 100%;
-
-          /*
-                 * แก้ไข: การใช้ "center" เพียงอย่างเดียวจะตัดลิงก์แรกและท้าย
-                 * เมื่อรายการกว้างกว่าหน้าจอ เพราะเบราว์เซอร์ไม่อนุญาตให้
-                 * เลื่อนไปยังส่วนล้นที่อยู่กึ่งกลางทั้งสองด้าน "safe center"
-                 * จะจัดกึ่งกลางเมื่อทุกอย่างพอดี และเปลี่ยนเป็นชิดจุดเริ่มต้น
-                 * ซึ่งเลื่อนได้ครบเมื่อเนื้อหาล้นหน้าจอ
-                 */
           justify-content: safe center;
-
           gap: clamp(12px, 4vw, 22px);
-
           overflow-x: auto;
-
           scrollbar-width: none;
         }
-
         .nav-links::-webkit-scrollbar {
           display: none;
         }
-
         .social-links {
           display: none;
         }
-
-        /* ---------------------------------------------
-               ส่วนหลักด้านบนบนมือถือ
-               --------------------------------------------- */
-
         .hero {
-          /*
-                 * บนมือถือจะเปลี่ยนจากสองคอลัมน์เป็นหนึ่งคอลัมน์
-                 */
           grid-template-columns: 1fr;
-
           min-height: auto;
-
           text-align: center;
-
           gap: 35px;
-
           padding-top: 55px;
           padding-bottom: 45px;
         }
-
         .hero-text {
           display: flex;
           flex-direction: column;
           align-items: center;
         }
-
         .hero-text h1 {
           font-size: clamp(28px, 9vw, 42px);
         }
-
         .hero-text h2 {
           font-size: clamp(25px, 8vw, 38px);
         }
-
         .hero-description {
           width: 100%;
-
           max-width: 450px;
-
           font-size: 9px;
-
           text-align: left;
         }
-
         .profile {
           order: -1;
-
           width: clamp(180px, 55vw, 260px);
         }
-
-        /* ---------------------------------------------
-               ส่วนบริษัท
-               --------------------------------------------- */
-
         .worked-with {
           padding-bottom: 50px;
         }
-
         .worked-title {
           text-align: center;
         }
-
         .company-list {
-          /*
-                 * สองคอลัมน์ช่วยให้อ่านง่ายขึ้นบนโทรศัพท์
-                 */
           grid-template-columns: repeat(2, 1fr);
-
           gap: 10px;
         }
-
         .company:last-child {
-          /*
-                 * จัดรายการสุดท้ายให้อยู่กึ่งกลางเมื่อมี 5 บริษัท
-                 */
           grid-column: 1 / -1;
-
           width: 50%;
-
           justify-self: center;
         }
       }
-
-      /* =====================================================
-           มือถือหน้าจอเล็กมาก
-           ===================================================== */
 
       @media (max-width: 380px) {
         .container {
           width: 92%;
         }
-
         .nav-links {
           gap: 10px;
         }
-
         .nav-links a {
           font-size: 7px;
         }
-
         .hero {
           gap: 28px;
         }
-
         .profile {
           width: 170px;
         }
-
         .company {
           min-height: 42px;
         }
@@ -641,35 +416,20 @@
 
   <body>
     <!-- =====================================================
-         แถบนำทาง
+         NAVIGATION
          ===================================================== -->
-
     <div class="container">
       <nav class="navbar">
         <div class="nav-content">
           <ul class="nav-links">
-            <li>
-              <a href="#home"> Home </a>
-            </li>
-
-            <li>
-              <a href="#case-studies"> Case Studies </a>
-            </li>
-
-            <li>
-              <a href="#testimonials"> Testimonials </a>
-            </li>
-
-            <li>
-              <a href="#recent-work"> Recent work </a>
-            </li>
-
-            <li>
-              <a href="#contact"> Get In Touch </a>
-            </li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#case-studies">Case Studies</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#recent-work">Recent work</a></li>
+            <li><a href="#contact">Get In Touch</a></li>
           </ul>
 
-          <!-- ไอคอนโซเชียล -->
+          <!-- Social Icons -->
           <div class="social-links">
             <!-- LinkedIn -->
             <a href="#" aria-label="LinkedIn">
@@ -690,7 +450,7 @@
             </a>
 
             <!-- X / Twitter -->
-            <a href="#" aria-label="X / Twitter">
+            <a href="#" aria-label="Twitter">
               <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   d="M18.9 2H22l-6.77 7.74L23.2 22h-6.24l-4.89-6.4L6.48 22H3.37l7.24-8.28L3 2h6.4l4.42 5.84L18.9 2Zm-1.1 17.88h1.73L8.47 4h-1.8l11.13 15.88Z"
@@ -703,99 +463,82 @@
     </div>
 
     <!-- =====================================================
-         ส่วนหลักด้านบน
+         HERO
          ===================================================== -->
-
     <main id="home">
       <div class="container">
         <section class="hero">
-          <!-- ข้อความส่วนหลักด้านบน -->
+          <!-- Hero Text -->
           <div class="hero-text">
             <h1>6619410001</h1>
-
             <h2>Thatchai Khunsricharoen</h2>
-
             <p class="hero-description">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
               rem odit labore unde nemo omnis sequi hic sit laudantium
               repellendus recusandae vitae ea laborum, ipsa nisi eos autem.
             </p>
-
             <a href="#contact" class="start-button">
               Let's get started
-
-              <span class="arrow"> › </span>
+              <span class="arrow">›</span>
             </a>
           </div>
 
-          <!-- รูปโปรไฟล์ -->
+          <!-- Profile -->
           <div class="profile">
-            <img
-              src="./images/profile1.jpg"
-              alt="Thatchai Khunsricharoen profile"
-            />
+            <img src="./images/profile.jpg" alt="My profile" />
           </div>
         </section>
 
         <!-- =================================================
-             บริษัทที่เคยร่วมงาน
-             ================================================= -->
-
+                 WORKED WITH
+                 ================================================= -->
         <section class="worked-with">
           <p class="worked-title">Worked with</p>
 
           <div class="company-list">
-            <!-- ClickUp -->
-            <div class="company clickup">
-              <svg class="company-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M12 3.2 4.8 8.6l2.3 2.9L12 8.1l4.9 3.4 2.3-2.9L12 3.2Zm0 7.1c-3.7 0-6.7 3-6.7 6.7S8.3 23.7 12 23.7s6.7-3 6.7-6.7h-3.4c0 1.8-1.5 3.3-3.3 3.3s-3.3-1.5-3.3-3.3 1.5-3.3 3.3-3.3c1.1 0 2.1.5 2.7 1.3l2.7-2.1c-1.2-1.6-3.3-2.6-5.4-2.6Z"
-                />
-              </svg>
-
-              <span>ClickUp</span>
+            <!-- 1. ClickUp -->
+            <div class="company">
+              <img
+                src="./images/clickup.png"
+                alt="ClickUp"
+                class="company-logo"
+              />
             </div>
 
-            <!-- Dropbox -->
-            <div class="company dropbox">
-              <svg class="company-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="m7 2 5 4-5 4-5-4 5-4Zm10 0 5 4-5 4-5-4 5-4ZM7 11l5 4-5 4-5-4 5-4Zm10 0 5 4-5 4-5-4 5-4ZM12 16l5 4-5 4-5-4 5-4Z"
-                />
-              </svg>
-
-              <span>Dropbox</span>
+            <!-- 2. Dropbox -->
+            <div class="company">
+              <img
+                src="./images/dropbox.png"
+                alt="Dropbox"
+                class="company-logo"
+              />
             </div>
 
-            <!-- Paychex -->
-            <div class="company paychex">
-              <svg class="company-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2Zm0 4v2h16V8H4Zm0 4v4h5v-4H4Zm7 0v2h9v-2h-9Z"
-                />
-              </svg>
-
-              <span>PAYCHEX</span>
+            <!-- 3. Paychex -->
+            <div class="company">
+              <img
+                src="./images/Paychek.png"
+                alt="Paychex"
+                class="company-logo"
+              />
             </div>
 
-            <!-- Elastic -->
-            <div class="company elastic">
-              <svg class="company-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 4h16v4H8v4h9v4H8v4h12v4H4V4Z" />
-              </svg>
-
-              <span>elastic</span>
+            <!-- 4. Elastic -->
+            <div class="company">
+              <img
+                src="./images/elastic.png"
+                alt="Elastic"
+                class="company-logo"
+              />
             </div>
 
-            <!-- Stripe -->
-            <div class="company stripe">
-              <svg class="company-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M21 5.5c-1.7-.9-3.7-1.4-5.9-1.4-3.9 0-6.6 2-6.6 5.1 0 5.5 7.8 4.1 7.8 6.5 0 .9-.8 1.3-2.2 1.3-1.8 0-4.1-.6-5.8-1.6v3.9c1.8.9 3.9 1.4 6.1 1.4 4 0 6.8-2 6.8-5.1 0-5.6-7.8-4.2-7.8-6.5 0-.8.7-1.3 2-1.3 1.6 0 3.8.5 5.6 1.3V5.5Z"
-                />
-              </svg>
-
-              <span>stripe</span>
+            <!-- 5. Stripe -->
+            <div class="company">
+              <img
+                src="./images/stripe.png"
+                alt="Stripe"
+                class="company-logo"
+              />
             </div>
           </div>
         </section>
@@ -803,4 +546,3 @@
     </main>
   </body>
 </html>
-```
